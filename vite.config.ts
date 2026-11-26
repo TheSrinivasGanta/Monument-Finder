@@ -12,8 +12,8 @@ export default defineConfig({
 				changeOrigin: true,
 				secure: true,
 				rewrite: (path) =>
-					path.replace(/^\/wfs/, '/SH_INSPIREDOWNLOAD_AI_PS')
-			}
-		}
-	}
+					path.replace(/^\/wfs/, '/SH_INSPIREDOWNLOAD_AI_PS'),
+			},
+		},
+	},
 })
