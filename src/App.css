@@ -1,0 +1,653 @@
+
+/* =========================================
+   MONUMENT FINDER - MODERN DESIGN
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f3f6fb;
+  color: #172554;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+  max-width: 1500px;
+  margin: 0 auto 24px;
+  padding: 22px 28px;
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(30, 64, 120, 0.05);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #eaf1ff;
+  color: #2458d3;
+  font-size: 30px;
+}
+
+.brand h1 {
+  margin: 0 0 5px;
+  color: #17336d;
+  font-size: 25px;
+  font-weight: 750;
+}
+
+.brand p {
+  margin: 0;
+  color: #8290a8;
+  font-size: 13px;
+}
+
+.location-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 20px;
+  border: 1px solid #2458d3;
+  border-radius: 10px;
+  background: #2458d3;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.location-button:hover {
+  background: #1945ae;
+  color: #ffffff;
+}
+
+.location-button:focus-visible {
+  outline: 3px solid #a9c2ff;
+  outline-offset: 3px;
+}
+
+.location-message {
+  margin: 14px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   MAIN MAP + SIDEBAR LAYOUT
+========================================= */
+
+.explorer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  align-items: start;
+  gap: 22px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   MAP SECTION
+========================================= */
+
+.map-section {
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e5ebf3;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(30, 64, 120, 0.05);
+}
+
+.map-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 21px 24px;
+}
+
+.map-heading h2 {
+  margin: 0 0 5px;
+  color: #172f60;
+  font-size: 19px;
+}
+
+.map-heading p {
+  margin: 0;
+  color: #8290a8;
+  font-size: 13px;
+}
+
+.map-status {
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #edf5ff;
+  color: #2458d3;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.map {
+  width: 100%;
+  height: 690px;
+  background: #e8eef5;
+}
+
+.map:focus-visible {
+  outline: 3px solid #2458d3;
+  outline-offset: -3px;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 17px 22px;
+  border-top: 1px solid #edf0f5;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.map-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.map-legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-user {
+  background: #2563eb;
+}
+
+.legend-monument {
+  background: #dc2626;
+}
+
+.legend-route {
+  background: #2563eb;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.nearby-monuments,
+.route-panel,
+.monument-details {
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e5ebf3;
+  border-radius: 17px;
+  box-shadow: 0 5px 22px rgba(30, 64, 120, 0.045);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: #8494b0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #172f60;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.count-badge {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 11px;
+  background: #eaf1ff;
+  color: #2458d3;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.section-description {
+  margin: 12px 0 20px;
+  color: #8290a8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   MONUMENT CARDS
+========================================= */
+
+.monument-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.monument-card {
+  padding: 15px;
+  background: #f8faff;
+  border: 1px solid #e7edf7;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.monument-card:hover {
+  border-color: #b9cbf5;
+  transform: translateY(-2px);
+}
+
+.monument-name {
+  display: block;
+  width: 100%;
+  margin-bottom: 9px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #2458d3;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.monument-name:hover {
+  color: #173c9b;
+  text-decoration: underline;
+}
+
+.monument-distance {
+  margin: 0 0 13px;
+  color: #7b8aa3;
+  font-size: 12px;
+}
+
+.monument-distance span {
+  color: #2458d3;
+  font-weight: 800;
+}
+
+/* =========================================
+   WALKING ROUTE BUTTON
+========================================= */
+
+.nearby-monuments .route-button {
+  display: block;
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #2458d3;
+  border-radius: 9px;
+  background-color: #2458d3;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 750;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nearby-monuments .route-button:hover:not(:disabled) {
+  background-color: #173f9e;
+  border-color: #173f9e;
+  color: #ffffff;
+}
+
+.nearby-monuments .route-button:disabled {
+  background: #a6b4cb;
+  border-color: #a6b4cb;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.nearby-monuments .route-button:focus-visible {
+  outline: 3px solid #a9c2ff;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   WALKING NAVIGATION
+========================================= */
+
+.route-panel {
+  border-top: 4px solid #2458d3;
+}
+
+.navigation-icon {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 11px;
+  background: #eaf1ff;
+  color: #2458d3;
+  font-size: 20px;
+}
+
+.route-message {
+  margin: 17px 0;
+  padding: 12px;
+  border-radius: 9px;
+  background: #f0f5ff;
+  color: #3158a5;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.route-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 17px 0;
+}
+
+.summary-item {
+  padding: 13px 10px;
+  border: 1px solid #e5edfc;
+  border-radius: 10px;
+  background: #f6f9ff;
+}
+
+.summary-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #8494b0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.summary-item strong {
+  color: #2458d3;
+  font-size: 16px;
+}
+
+.instructions-heading {
+  margin: 22px 0 13px;
+  color: #172f60;
+  font-size: 14px;
+}
+
+.route-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route-instructions li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid #edf0f5;
+  border-radius: 9px;
+  background: #fafbfe;
+  color: #53647e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.step-number {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 7px;
+  background: #eaf1ff;
+  color: #2458d3;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.empty-state {
+  margin: 18px 0;
+  padding: 17px;
+  border: 1px dashed #d9e2f0;
+  border-radius: 10px;
+  color: #8a98ad;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* =========================================
+   RESET NAVIGATION BUTTON
+========================================= */
+
+.reset-button {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  border: 1px solid #dce4ef;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #52627a;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.reset-button:hover {
+  background: #edf3ff;
+  color: #2458d3;
+}
+
+.reset-button:focus-visible {
+  outline: 3px solid #a9c2ff;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   MONUMENT DETAILS
+========================================= */
+
+.monument-details {
+  border-left: 4px solid #2458d3;
+}
+
+.monument-details h2 {
+  margin: 10px 0 14px;
+  color: #172f60;
+  font-size: 17px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.monument-details p {
+  margin: 9px 0;
+  color: #65758d;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+button:focus-visible {
+  outline: 3px solid #a9c2ff;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+  .explorer-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 16px;
+  }
+
+  .map {
+    height: 600px;
+  }
+
+  .nearby-monuments,
+  .route-panel,
+  .monument-details {
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 760px) {
+  .app {
+    padding: 12px;
+  }
+
+  .header {
+    padding: 18px;
+  }
+
+  .header-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .location-button {
+    width: 100%;
+  }
+
+  .explorer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map {
+    height: 420px;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .monument-list {
+    max-height: 420px;
+  }
+
+  .map-heading {
+    padding: 17px;
+  }
+
+  .map-legend {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand h1 {
+    font-size: 21px;
+  }
+
+  .map {
+    height: 340px;
+  }
+
+  .map-status {
+    display: none;
+  }
+
+  .route-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY - IMPROVED TEXT CONTRAST
+========================================= */
+
+.brand p,
+.map-heading p,
+.eyebrow,
+.section-description,
+.empty-state {
+  color: #52627a;
+}
+
+.monument-distance {
+  color: #52627a;
+}
+
+.location-message {
+  color: #52627a;
+}
+
+.summary-label {
+  color: #52627a;
+}
+
+/* =========================================
+   ACCESSIBILITY - MAP TOUCH TARGETS
+========================================= */
+
+.ol-control button {
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
